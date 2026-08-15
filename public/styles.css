@@ -202,11 +202,33 @@ body {
   margin-bottom: 8px;
 }
 
+.about {
+  max-width: 680px;
+  margin: 64px auto 0;
+  padding: 28px 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.about p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
 .site-footer {
   display: flex;
   justify-content: center;
   gap: 24px;
-  margin-top: 56px;
+  margin-top: 40px;
   font-family: var(--font-mono);
   font-size: 0.85rem;
 }
