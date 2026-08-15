@@ -2,6 +2,7 @@
   "name": "portfolio-site",
   "version": "1.0.0",
   "description": "Master deployable site that aggregates demos from Jenna England's individual portfolio project repos, served as one Express app on Render.",
+  "homepage": "https://jennas-portfolio.onrender.com/",
   "main": "server.js",
   "type": "module",
   "scripts": {

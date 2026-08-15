@@ -1,5 +1,7 @@
 # Portfolio Site
 
+**Live:** [jennas-portfolio.onrender.com](https://jennas-portfolio.onrender.com/)
+
 The single deployable Express app that serves all of Jenna England's portfolio project demos from one Render web service. Each project keeps its own standalone GitHub repo — this repo just concatenates the deployable pieces of each into one app so they can share a single URL and hosting bill.
 
 The root `/` is a landing page of clickable "window" cards, one per project (with a live scaled-down preview of the actual page). Clicking a window opens that project's full UI at its own subpath. New projects get their own card + subpath as they're added — nothing lands directly on any one project's UI.
@@ -51,10 +53,11 @@ No API keys are required — the Stripe assistant runs on a local offline semant
 
 ## Deployment
 
-Deployed on [Render](https://render.com) as a free-tier Web Service:
+Deployed on [Render](https://render.com) as a free-tier Web Service named `jennas-portfolio`:
 - Build command: `npm install`
 - Start command: `npm start`
 - No environment variables required.
+- URL: `https://jennas-portfolio.onrender.com/` — stable as long as the service keeps this name; changes only if the service is renamed/deleted or a custom domain is added.
 
 ## License
 
