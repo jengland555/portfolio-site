@@ -1,0 +1,19 @@
+{
+  "name": "portfolio-site",
+  "version": "1.0.0",
+  "description": "Master deployable site that aggregates demos from Jenna England's individual portfolio project repos, served as one Express app on Render.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "index-docs": "node projects/stripe-ai-doc-assistant/src/indexer.js"
+  },
+  "author": "Jenna England",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}
