@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jenna England | Portfolio</title>
+  <meta name="description" content="Technical writing & docs-as-code portfolio — live interactive demos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="hero">
+    <p class="eyebrow">Technical Writing &amp; Docs-as-Code Portfolio</p>
+    <h1>Jenna England</h1>
+    <p class="subhead">Live, interactive demos of documentation systems, RAG architecture, and content tooling. Click a window to open the project.</p>
+  </header>
+
+  <main class="window-grid">
+
+    <a class="project-window" href="/stripe/" aria-label="Open Stripe AI Documentation Assistant">
+      <div class="window-chrome">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="address-bar">yoursite.com/stripe/</span>
+      </div>
+      <div class="window-preview">
+        <iframe src="/stripe/" tabindex="-1" title="Stripe AI Documentation Assistant preview"></iframe>
+      </div>
+      <div class="window-info">
+        <h2>⚡ Stripe AI Documentation Assistant</h2>
+        <p>Retrieval-Augmented Generation chat assistant grounded in Stripe API docs, with cited sources and an inspectable RAG pipeline.</p>
+        <div class="tags">
+          <span class="tag">RAG</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Semantic Search</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="project-window" href="/odrive/" aria-label="Open ODrive API Docs">
+      <div class="window-chrome">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="address-bar">yoursite.com/odrive/</span>
+      </div>
+      <div class="window-preview">
+        <iframe src="/odrive/" tabindex="-1" title="ODrive API Docs preview"></iframe>
+      </div>
+      <div class="window-info">
+        <h2>⚙️ ODrive API Docs</h2>
+        <p>A Python docs-as-code pipeline that lints, validates, and semantically chunks a robotics API reference — plus the interactive portal it governs.</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">CI/CD</span>
+          <span class="tag">Linting</span>
+        </div>
+      </div>
+    </a>
+
+    <div class="project-window placeholder" aria-hidden="true">
+      <div class="placeholder-inner">
+        <span class="plus">+</span>
+        <p>More projects coming soon</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <a href="https://github.com/jengland555" target="_blank">GitHub ↗</a>
+    <a href="https://www.linkedin.com/in/jenna-england-0037b344/" target="_blank">LinkedIn ↗</a>
+  </footer>
+
+</body>
+</html>

@@ -19,11 +19,16 @@ app.use(cors());
 app.use(express.json());
 
 /**
- * Project: Stripe AI Documentation Assistant — mounted at "/"
- * (its frontend calls absolute paths like /api/chat, so it owns the root)
+ * Portfolio landing page — mounted at "/"
+ */
+app.use(express.static(path.join(__dirname, 'public')));
+
+/**
+ * Project: Stripe AI Documentation Assistant — mounted at "/stripe"
+ * (its frontend calls relative api paths, so it can live at any mount point)
  */
 const stripeDir = path.join(__dirname, 'projects/stripe-ai-doc-assistant');
-app.use(express.static(path.join(stripeDir, 'public')));
+app.use('/stripe', express.static(path.join(stripeDir, 'public')));
 
 const vectorStorePath = path.join(stripeDir, 'data/vector_store.json');
 if (!fs.existsSync(vectorStorePath)) {
@@ -31,7 +36,7 @@ if (!fs.existsSync(vectorStorePath)) {
   buildIndex();
 }
 
-app.post('/api/chat', async (req, res) => {
+app.post('/stripe/api/chat', async (req, res) => {
   const { query, apiKey } = req.body;
 
   if (!query || typeof query !== 'string') {
@@ -47,7 +52,7 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
-app.get('/api/docs', (req, res) => {
+app.get('/stripe/api/docs', (req, res) => {
   const docsDir = path.join(stripeDir, 'docs');
   if (!fs.existsSync(docsDir)) {
     return res.json({ files: [] });
@@ -93,7 +98,7 @@ app.get('/api/docs', (req, res) => {
   res.json({ files: docs });
 });
 
-app.post('/api/reindex', (req, res) => {
+app.post('/stripe/api/reindex', (req, res) => {
   const store = buildIndex();
   res.json({ message: 'Indexing complete', totalChunks: store.totalChunks });
 });
@@ -106,7 +111,8 @@ app.use('/odrive', express.static(path.join(__dirname, 'projects/odrive-api-docs
 app.listen(PORT, () => {
   console.log(`\n======================================================`);
   console.log(`🚀 Portfolio site is running!`);
-  console.log(`💬 Stripe AI Doc Assistant: http://localhost:${PORT}/`);
-  console.log(`⚙️  ODrive API Docs:         http://localhost:${PORT}/odrive/`);
+  console.log(`🏠 Landing page:             http://localhost:${PORT}/`);
+  console.log(`💬 Stripe AI Doc Assistant:  http://localhost:${PORT}/stripe/`);
+  console.log(`⚙️  ODrive API Docs:          http://localhost:${PORT}/odrive/`);
   console.log(`======================================================\n`);
 });
