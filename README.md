@@ -4,7 +4,7 @@
 
 The single deployable Express app that serves all of Jenna England's portfolio project demos from one Render web service. Each project keeps its own standalone GitHub repo — this repo just concatenates the deployable pieces of each into one app so they can share a single URL and hosting bill.
 
-The root `/` is a landing page of clickable "window" cards, one per project (with a live scaled-down preview of the actual page). Clicking a window opens that project's full UI at its own subpath. New projects get their own card + subpath as they're added — nothing lands directly on any one project's UI.
+The root `/` is a landing page of clickable "window" cards, one per project (with a live scaled-down preview of the actual page), followed by an About Me section and GitHub/LinkedIn links in the footer. Clicking a window opens that project's full UI at its own subpath. New projects get their own card + subpath as they're added — nothing lands directly on any one project's UI.
 
 ## Live routes
 
@@ -36,9 +36,11 @@ server.js                        # top-level Express app that mounts the landing
    - Static: `app.use('/<project-slug>', express.static(path.join(__dirname, 'projects/<project-slug>')));`
    - Dynamic with its own routes: import its route logic and mount everything (`app.use`, `app.get`, `app.post`, ...) under `/<project-slug>`.
 4. Add a new `.project-window` card to `public/index.html` (copy an existing one — chrome bar, live preview `<iframe>`, title, description, tags) pointing at `/<project-slug>/`.
-5. Test locally with `npm start`, then commit and push — Render auto-redeploys on push to `main`.
+5. Test locally with `npm start`, then commit and push to `main`.
 
 This repo intentionally does **not** modify the individual project repos — it only copies their already-working deployable code. When a project repo changes, re-copy the relevant files here and redeploy.
+
+**Automated version:** this whole process is packaged as a Claude Code skill at `.claude/skills/add-portfolio-project/SKILL.md`. Run `/add-portfolio-project` from the `GitHub_Stuff` root (the parent folder containing this repo and every individual project repo as siblings) after finishing and merging a new project — it scans for un-integrated sibling repos, checks the project is actually technical-writing related and merged to its remote (flagging you instead of guessing if either looks off), and does steps 2–5 itself.
 
 ## Local development
 
@@ -58,6 +60,8 @@ Deployed on [Render](https://render.com) as a free-tier Web Service named `jenna
 - Start command: `npm start`
 - No environment variables required.
 - URL: `https://jennas-portfolio.onrender.com/` — stable as long as the service keeps this name; changes only if the service is renamed/deleted or a custom domain is added.
+
+**Auto-Deploy caveat:** pushes to `main` are supposed to trigger a redeploy automatically, but this has been unreliable in practice — several pushes sat un-deployed until triggered manually. If a push doesn't go live within a few minutes, check the service's **Events** tab on the Render dashboard to see whether a deploy actually started; if not, go to **Settings → Build & Deploy** and confirm Auto-Deploy is set to **Yes** on branch `main`, or just click **Manual Deploy → Deploy latest commit**.
 
 ## License
 
